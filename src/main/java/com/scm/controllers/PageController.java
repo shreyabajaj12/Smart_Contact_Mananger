@@ -19,8 +19,21 @@ public class PageController {
     public String about(Model model){
         return "about";
     }
-    @RequestMapping("/services")
+    @RequestMapping("/service")
     public String services(Model model){
         return "services";
     }
+    @RequestMapping("/contact")
+    public String contact(Model model){
+        return "contact";
+    }
+    @RequestMapping("/login")
+    public String login(Model model){
+        return "contact";
+    }
+    @RequestMapping("/register")
+    public String register(Model model){
+        return "register";
+    }
+
 }
