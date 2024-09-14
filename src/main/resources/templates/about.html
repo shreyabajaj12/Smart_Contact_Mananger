@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" th:replace="~{base::parent(~{::#page},~{::title},~{::script})}">
+<html lang="en">
 <head>
-    <title>About Page</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-<div id="page">
-    <h1> welcome to about page</h1>
-</div>
-<script>console.log('hello from about page')</script>
+This is about page
 
+<!--using fragment using host tag-->
+<div class="host-fragment" th:replace= "~{base::parent(~{::section})}">
+<section>this is a dynamic content</section>
+</div>
 </body>
 </html>

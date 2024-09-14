@@ -1,25 +1,7 @@
-<!doctype html>
-<html class="dark" lang="en" xmlns:th="https://www.thymeleaf.org" th:fragment="parent(content,title,script)">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title th:replace="${title}"></title>
-    <link rel="stylesheet" th:href="@{'/css/output.css'}"/>
-    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
-</head>
-<body class="dark:bg-gray-500 dark:text-white">
-
-<!--common header-->
-<div th:replace="navbar::navbar"></div>
-
-<div class="p-4">
-<section th:replace="${content}" class="p-4">
-</section>
+<div class="parent-fragment"
+    th:fragment="parent(content)">
+    <h1>this is parent fragment</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id iste qui voluptas!</p>
+<!--    <p>this is sum <span th:text="${a}+${b}"></span></p>-->
+    <div th:insert="${content}"></div>
 </div>
-<h1>hello world</h1>
-<script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
-<th:block th:replace="${script}"></th:block>
-</body>
-</html>
