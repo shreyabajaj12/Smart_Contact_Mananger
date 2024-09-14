@@ -1,0 +1,7 @@
+<div class="parent-fragment"
+    th:fragment="parent(content)">
+    <h1>this is parent fragment</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id iste qui voluptas!</p>
+<!--    <p>this is sum <span th:text="${a}+${b}"></span></p>-->
+    <div th:insert="${content}"></div>
+</div>
