@@ -1,7 +1,10 @@
 package com.scm.controllers;
 
+import com.scm.entities.User;
+import com.scm.forms.UserForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -33,7 +36,21 @@ public class PageController {
     }
     @RequestMapping("/register")
     public String register(Model model){
+        UserForm userForm = new UserForm();
+        //default data v dal sakte h
+        model.addAttribute("userForm", userForm);
         return "register";
+    }
+
+    //processing register
+    @PostMapping("/do_register")
+    public String processRegister(){
+
+        //fetch the form data
+        //validate the form data
+        //message successful
+        //redirect to register
+        return"redirect:/register";
     }
 
 }

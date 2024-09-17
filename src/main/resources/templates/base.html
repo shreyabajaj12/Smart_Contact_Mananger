@@ -14,13 +14,12 @@
 <body class="dark:bg-gray-500 dark:text-white">
 
 <!--common header-->
-<div th:replace="navbar::navbar"></div>
-
-<div class="p-4">
-    <section th:replace="${content}" class="p-4">
-    </section>
+<div style="position: fixed; top: 0; width: 100%; height: 60px;" data-th-replace="~{navbar :: navbar}"></div>
+<!--main content -->
+<div class="pt-15">
+    <section data-th-replace="${content}"></section>
 </div>
-<h1>hello world</h1>
+
 <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
 <script th:src="@{/js/script.js}"></script>
 <th:block th:replace="${script}"></th:block>
