@@ -30,6 +30,7 @@ public class User {
     private boolean phoneVerified = false;
 
     //through which method user has login inside the application
+    @Enumerated
     private Providers provider=Providers.SELF;
     private Providers providerUserId;
 
