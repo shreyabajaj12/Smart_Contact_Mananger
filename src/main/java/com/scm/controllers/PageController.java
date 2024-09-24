@@ -6,10 +6,12 @@ import com.scm.helper.Message;
 import com.scm.helper.MessageType;
 import com.scm.services.UserService;
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -54,7 +56,7 @@ public class PageController {
 
     //processing register
     @PostMapping("/do_register")
-    public String processRegister(@ModelAttribute UserForm userForm, HttpSession session){  //modelAttribute does is it matches the name with that in userform and that in the register to store corresponding
+    public String processRegister(@Valid @ModelAttribute UserForm userForm, BindingResult rBindingResult, HttpSession session){  //modelAttribute does is it matches the name with that in userform and that in the register to store corresponding
         System.out.println(userForm);
 //        User user=User.builder()
 //                .name(userForm.getName())
@@ -63,6 +65,9 @@ public class PageController {
 //                .about(userForm.getDescription())
 //                .profilePic("static/images/1048276-200.png")
 //                .build();
+        if(rBindingResult.hasErrors()){
+            return "register";
+        }
         User user = new User();
         user.setName(userForm.getName());
         user.setPassword(userForm.getPassword());

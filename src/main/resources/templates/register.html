@@ -18,33 +18,54 @@
 
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Signup Here !!</h5>
             <p class="font-normal text-gray-500 dark:text-gray-500">Start storing your text over here</p>
-            <form  class= " mt-5" th:action="@{'/do_register'}" method="post" th:object="${userForm}">
+            <form  class= " mt-5" th:action="@{'/do_register'}" method="post" th:object="${userForm}" novalidate>
 <!--                name field-->
                 <div class="mb-3">
                     <label for="name"  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
                     <input th:field="*{name}" type="text" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter your Name" required />
+                    <p
+                            th:if="${#fields.hasErrors('name')}"
+                            th:errors="*{name}"
+                            class="font-normal text-red-600 py-1 px-1.5"></p>
                 </div>
+<!--                since we have already taken the object of the field we just need to find the value that's why *{name}-->
+
 <!--                email field-->
                 <div class="mb-3">
                     <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
                     <input th:field="*{email}" type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter your Email" required />
+                    <p
+                            th:if="${#fields.hasErrors('email')}"
+                            th:errors="*{email}"
+                            class="font-normal text-red-600 py-1 px-1.5"></p>
                 </div>
 <!--                password-->
                 <div class="mb-3">
                     <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
                     <input th:field="*{password}" type="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter your Password" required />
+                    <p
+                            th:if="${#fields.hasErrors('password')}"
+                            th:errors="*{password}"
+                            class="font-normal text-red-600 py-1 px-1.5"></p>
                 </div>
 <!--                phone number-->
                 <div class="mb-3">
                     <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone Number</label>
                     <input th:field="*{phoneNumber}" type="text" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter your Phone Number" required />
+                    <p
+                            th:if="${#fields.hasErrors('phoneNumber')}"
+                            th:errors="*{phoneNumber}"
+                            class="font-normal text-red-600 py-1 px-1.5"></p>
                 </div>
 <!--                text area-->
                 <div class="mb-3">
 
                     <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your message</label>
                     <textarea th:field="*{description}" id="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your thoughts here..."></textarea>
-
+                    <p
+                            th:if="${#fields.hasErrors('description')}"
+                            th:errors="*{description}"
+                            class="font-normal text-red-600 py-1 px-1.5"></p>
                 </div>
 <!--                buttons-->
                 <div class=" flex justify-center mb-3 space-x-3">
