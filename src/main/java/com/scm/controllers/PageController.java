@@ -46,7 +46,10 @@ public class PageController {
     }
     @RequestMapping("/login")
     public String login(Model model){
-        return "contact";
+        UserForm userForm = new UserForm();
+        //default data v dal sakte h
+        model.addAttribute("userForm", userForm);
+        return "login";
     }
     @RequestMapping("/register")
     public String register(Model model){

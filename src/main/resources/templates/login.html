@@ -1,13 +1,70 @@
 <!DOCTYPE html>
-<html lang="en" th:replace="~{base::parent(~{::#page},~{::title},~{::script})}">
+<html lang="en" th:replace="~{base :: parent(~{::#page},~{::title},~{::script})}">
 <head>
   <title>Login Page</title>
 </head>
 <body>
 <div id="page">
-  <h1> welcome to about page</h1>
+  <div class="grid grid-cols-12">
+    <div class="col-span-4 md:col-span-3"></div>
+    <div class="col-span-12 md:col-span-6">
+      <!--        from 12 it is going to take 6 space-->
+      <div class=" mt-4 block   p-6 border-t-[10px] border-green-700  bg-white  rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+
+
+        <!--            message here-->
+        <div th:replace="message::messagebox"></div>
+
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Login Here !!</h5>
+        <p class="font-normal text-gray-500 dark:text-gray-500">Start storing your text over here</p>
+
+<!--        used for showing the error if wrong credentials has put or during logout  -->
+
+        <div class="text-red-600 text-center my-3" th:if="${param.error}">
+          Invalid username and password.</div>
+        <div class= "text-green-700 text-center my-3" th:if="${param.logout}">
+          You have been logged out.</div>
+
+
+        <form class="mt-5" th:action="@{/authenticate}" method="post" th:object="${userForm}" novalidate>
+
+        <!--                since we have already taken the object of the field we just need to find the value that's why *{name}-->
+
+          <!--                username field-->
+          <div class="mb-3">
+            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+            <input name="email" th:field="*{email}" type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter your Email" required />
+            <p
+                    th:if="${#fields.hasErrors('email')}"
+                    th:errors="*{email}"
+                    class="font-normal text-red-600 py-1 px-1.5"></p>
+          </div>
+          <!--                password-->
+          <div class="mb-3">
+            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+            <input name="password" th:field="*{password}" type="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter your Password" required />
+            <p
+                    th:if="${#fields.hasErrors('password')}"
+                    th:errors="*{password}"
+                    class="font-normal text-red-600 py-1 px-1.5"></p>
+          </div>
+
+
+          <!--                buttons-->
+          <div class=" flex justify-center mb-3 space-x-3">
+            <button type="submit" class="px-3 py-2 rounded text-white bg-green-700 hover:bg-blue-800 dark:bg-blue-600 dark:text-white dark:hover:bg-blue-500">
+              Login
+            </button>
+            <button type="reset" class="px-3 py-2 rounded text-white bg-blue-500 hover:bg-pink-800 dark:bg-blue-600 dark:text-white dark:hover:bg-blue-500">
+              Reset
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
-<script>console.log('hello from about page')</script>
+<script>console.log('hello from login page')</script>
 
 </body>
 </html>
